@@ -14,6 +14,15 @@ export PATH=${M2_HOME}/bin:${PATH}
 xmodmap -e "remove lock = Caps_Lock"
 set -o vi
 
+# see http://blog.sanctum.geek.nz/default-grep-options/?utm_source=rss&utm_medium=rss&utm_campaign=default-grep-options
+GREP_OPTIONS=--color
+if grep --help | grep -- --exclude-dir &>/dev/null; then
+    for PATTERN in .cvs .git .hg .svn; do
+        GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=$PATTERN"
+    done
+fi
+export GREP_OPTIONS
+
 
 alias lshead='ls -lt| head'
 alias gb='git branch'
