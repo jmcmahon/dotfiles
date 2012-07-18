@@ -9,7 +9,8 @@ fi
 
 
 export M2_HOME='/usr/local/maven'
-export PATH=${M2_HOME}/bin:${PATH}
+export JAVA_HOME='/usr/java/jdk1.6.0_21'
+export PATH=${M2_HOME}/bin:${JAVA_HOME}/bin:${PATH}
 
 xmodmap -e "remove lock = Caps_Lock"
 set -o vi
